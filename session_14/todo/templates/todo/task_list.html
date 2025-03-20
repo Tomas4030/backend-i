@@ -1,0 +1,8 @@
+{% block content %}
+    <h1>Ola mundo</h1>
+    <ul>
+        {% for Task in object_list %}
+        <li>{{ Task.title }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
