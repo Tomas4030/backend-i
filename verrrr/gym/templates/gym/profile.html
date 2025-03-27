@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="profile-container">
+    <h2>Complete o Seu Perfil</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="id_altura">Altura (cm):</label>
+        {{ form.altura }}
+
+        <label for="id_objetivo">Objetivo:</label>
+        {{ form.objetivo }}
+
+        <label for="id_dias_treino">Dias de Treino por Semana:</label>
+        {{ form.dias_treino }}
+
+        <button type="submit">Salvar</button>
+    </form>
+</div>
+{% endblock %}
