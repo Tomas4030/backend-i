@@ -1,11 +1,14 @@
 from django import forms
+from gym.models import Task, UserProfile,WeekDay
 
-from gym.models import Task
 
-
-class TaskForm(forms.ModelForm):
-    user = forms.IntegerField(widget=forms.HiddenInput, required=False)
+class UserProfileForm(forms.ModelForm):
+    dias_treino = forms.ModelMultipleChoiceField(
+        queryset=WeekDay.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=True
+    )
 
     class Meta:
-        model = Task
-        exclude= ["is_done"]
+        model = UserProfile
+        fields = ["altura", "peso", "objetivo", "dias_treino"]

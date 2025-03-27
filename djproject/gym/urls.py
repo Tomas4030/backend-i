@@ -1,8 +1,10 @@
 from django.urls import path
 from django.contrib.auth.views import LoginView
 from gym import views
+from gym.views import UserProfileView
 
 urlpatterns = [
+    path("profile/", UserProfileView.as_view(), name="user_profile"),
     path("tasks",views.TaskListView.as_view(), name="task_list"),
     path("signup",views.SignUpView.as_view(), name="signup"),
     path("signin",LoginView.as_view(), name="signin"),
