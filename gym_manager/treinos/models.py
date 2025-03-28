@@ -19,6 +19,6 @@ class GymProfile(models.Model):
     peso = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     objetivos = models.CharField(max_length=20, choices=OBJETIVO_CHOICES, null=True, blank=True)
     dias_treino = models.CharField(max_length=20, choices=DIAS_CHOICES, null=True, blank=True)
-
+    
     def __str__(self):
         return f"Perfil de {self.user.username}"

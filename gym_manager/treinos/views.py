@@ -13,22 +13,23 @@ class GymProfileCreateView(LoginRequiredMixin, CreateView):
     model = GymProfile
     form_class = GymProfileForm
     template_name = "gym/gym_profile_form.html"
-
-    # Redireciona para a página de edição se o usuário já tiver um perfil de ginásio
-    def get(self, request, *args, **kwargs):
-        try:
-            # Verificar se o usuário já tem um perfil de ginásio
-            gym_profile = GymProfile.objects.get(user=request.user)
-            return redirect('gym_profile_edit')  # Redireciona para a página de edição
-        except GymProfile.DoesNotExist:
-            return super().get(request, *args, **kwargs)  # Caso contrário, cria um novo perfil
+    success_url = reverse_lazy('home')
 
     def form_valid(self, form):
+        # Atribui explicitamente o usuário logado ao campo 'user'
         form.instance.user = self.request.user
-        return super().form_valid(form)
 
-    success_url = reverse_lazy('home')
-    
+        try:
+            gym_profile = GymProfile.objects.get(user=self.request.user)
+            gym_profile.altura = form.cleaned_data.get('altura')
+            gym_profile.peso = form.cleaned_data.get('peso')
+            gym_profile.objetivos = form.cleaned_data.get('objetivos')
+            gym_profile.dias_treino = form.cleaned_data.get('dias_treino')
+            gym_profile.save()  
+        except GymProfile.DoesNotExist:
+            gym_profile = form.save()
+
+        return super().form_valid(form)
 
 # Página inicial com login e cadastro
 class IndexView(TemplateView):
@@ -55,11 +56,10 @@ def logout_view(request):
     logout(request)
     return redirect("/")   
 
-# Página home (após login)
 def home(request):
-    # Verificar se o usuário tem um perfil de ginásio
-    try:
-        request.user.gymprofile
-    except GymProfile.DoesNotExist:
-        return redirect('gym_profile_form')  # Redireciona para criar o perfil
-    return render(request, 'gym/home.html')  # Caso contrário, renderiza a home
+    if request.user.is_authenticated:
+        gym_profile = GymProfile.objects.filter(user=request.user).first()
+    else:
+        gym_profile = None
+    
+    return render(request, 'gym/home.html', {'gym_profile': gym_profile})
