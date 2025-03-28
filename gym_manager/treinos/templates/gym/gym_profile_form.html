@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Criar/Editar Perfil{% endblock %}
+
+{% block content %}
+    <h1>Crie ou edite seu perfil de ginásio</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Salvar</button>
+    </form>
+{% endblock %}

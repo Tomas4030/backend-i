@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Página Inicial{% endblock %}
+
+{% block content %}
+    <div class="text-center">
+        <h1>Bem-vindo ao Ginásio, {{ user.username }}!</h1>
+
+            <div class="card shadow p-4 mt-3">
+                <h2 class="mb-3">Seu perfil de ginásio</h2>
+                <p><strong>Altura:</strong> {{ user.gymprofile.altura }}</p>
+                <p><strong>Peso:</strong> {{ user.gymprofile.peso }}</p>
+                <p><strong>Objetivos:</strong> {{ user.gymprofile.objetivos }}</p>
+                <p><strong>Dias de treino:</strong> {{ user.gymprofile.dias_treino }}</p>                
+                <a href="{% url 'gym_profile_form' %}" class="btn btn-warning">Atualizar Perfil</a>
+                <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+            </div>
+ 
+    </div>
+{% endblock %}
