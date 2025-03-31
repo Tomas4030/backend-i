@@ -4,10 +4,10 @@
 
 {% block content %}
     <div class="text-center">
-        <h1>Bem-vindo ao Ginásio, {{ gym_profile.user }}!</h1>
+        <h1>Bem-vindo, {{ user.username }}!</h1>
 
         <div class="card shadow p-4 mt-3">
-            <h2 class="mb-3">Seu perfil de ginásio</h2>
+            <h2 class="mb-3">Seu perfil</h2>
 
                 <p><strong>Altura:</strong> {{ gym_profile.altura }}</p>
                 <p><strong>Peso:</strong> {{ gym_profile.peso }}</p>

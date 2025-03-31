@@ -2,13 +2,13 @@ start:
 	poetry run python manage.py runserver
 
 migrate:
-	poetry run python manage.py migrate
+	docker compose run --rm web poetry run python manage.py migrate
 
 migrations:
-	poetry run python manage.py makemigrations $(app)
+	docker compose run --rm web poetry run python manage.py makemigrations $(app)
 
 createsuperuser:
-	poetry run python manage.py createsuperuser
+	docker compose run --rm web poetry run python manage.py createsuperuser
 
 new-app:
 	poetry run python manage.py startapp $(app)
