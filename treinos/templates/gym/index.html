@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}Signin | Signup{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <a href="{% url 'signup' %}" class="btn btn-primary">Sign Up</a>
+    <a href="{% url 'login' %}" class="btn btn-secondary">Sign In</a>
+</div>
+{% endblock %}

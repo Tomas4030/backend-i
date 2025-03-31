@@ -1,0 +1,33 @@
+[project]
+name = "gym-manager"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "love4036",email = "tigasfonseca152@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "django (>=5.1.7,<6.0.0)",
+    "psycopg2-binary (>=2.9.10,<3.0.0)",
+    "django-crispy-forms (>=2.3,<3.0)",
+    "dotenv (>=0.9.9,<0.10.0)",
+    "logging (>=0.4.9.6,<0.5.0.0)",
+    "pytest (>=8.3.5,<9.0.0)",
+    "uvicorn (>=0.34.0,<0.35.0)",
+    "requests (>=2.32.3,<3.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "gym_manager"}]
+
+[tool.poetry.group.dev.dependencies]
+pytest-django = "^4.10.0"
+pytest = "^8.3.5"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "gym_manager.settings"

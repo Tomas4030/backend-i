@@ -1,0 +1,12 @@
+
+    <h1>Plano de Treino</h1>
+
+    {% if treino_plano %}
+        {% for exercicio in treino_plano %}
+            <h2>{{ exercicio.nome }}</h2>
+            <p>{{ exercicio.descricao|safe }}</p>
+        {% endfor %}
+    {% else %}
+        <p>Nenhum exercício disponível.</p>
+    {% endif %}
+
