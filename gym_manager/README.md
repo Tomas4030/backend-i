@@ -93,9 +93,9 @@ Este projeto utiliza o **PostgreSQL** como banco de dados, mas também é possí
 
     ```bash
     API=(https://wger.de/pt/user/api-key) -> Ir a este site para criar a api
-    DB_NAME=nome_do_banco
-    DB_USER=usuario
-    DB_PASSWORD=senha
-    DB_HOST=localhost
-    DB_PORT=5432
+    POSTGRES_USERNAME=
+    POSTGRES_PASSWORD=
+    POSTGRES_HOST=
+    POSTGRES_PORT=
+    POSTGRES_DB=
     ```
